@@ -74,6 +74,20 @@ func isValidSetList(setList []CubeSet) bool {
   return true
 }
 
+func getMinimumSet(setList []CubeSet) CubeSet {
+  minSet := CubeSet{}
+
+  for _, set := range setList {
+    for color, count := range set {
+      if minSet[color] < count {
+        minSet[color] = count
+      }
+    }
+  }
+
+  return minSet
+}
+
 func main() {
   file, err := os.Open("inputs/day2.txt")
   if err != nil {
@@ -81,7 +95,8 @@ func main() {
     return
   }
 
-  total := 0
+  part1Total := 0
+  part2Total := 0
 
   scanner := bufio.NewScanner(file)
   for scanner.Scan() {
@@ -89,12 +104,21 @@ func main() {
 
     // parse (should return game # and a list of sets)
     gameNum, setList := parseGame(line)
-    // test list of sets against limit
+    // part 1: test list of sets against limit
     if isValidSetList(setList) {
-      total += gameNum
+      part1Total += gameNum
     }
+
+    // get minimum of each cube that would support the games sets
+    minSet := getMinimumSet(setList)
+    product := 1
+    for _, count := range minSet {
+      product *= count
+    }
+    part2Total += product
   }
 
-  fmt.Printf("Total: %d\n", total)
+  fmt.Printf("Part 1: %d\n", part1Total)
+  fmt.Printf("Part 2: %d\n", part2Total)
   return
 }
