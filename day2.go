@@ -88,7 +88,8 @@ func getMinimumSet(setList []CubeSet) CubeSet {
   return minSet
 }
 
-func main() {
+// func main() {
+func day2() {
   file, err := os.Open("inputs/day2.txt")
   if err != nil {
     fmt.Println(err)

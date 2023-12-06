@@ -23,7 +23,8 @@ var numMap map[string]int = map[string]int{
 var numSlice = []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 var reverseNumSlice = []string{"eno", "owt", "eerht", "ruof", "evif", "xis", "neves", "thgie", "enin"}
 
-func main() {
+// func main() {
+func day1() {
   file, err := os.Open("inputs/day1.txt")
   if err != nil {
     fmt.Println(err)
