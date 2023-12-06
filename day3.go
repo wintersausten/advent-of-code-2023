@@ -193,7 +193,7 @@ func totalGearRatio(file *os.File) int {
   return total
 }
 
-func main () {
+func day3() {
   file, err := os.Open("inputs/day3.txt")
   if err != nil {
     fmt.Println(err)
