@@ -174,7 +174,7 @@ func parseHandSlice(scanner *bufio.Scanner) []Hand {
   return handList
 }
 
-func main() {
+func day7() {
   file, err := os.Open("inputs/day7.txt")
   if err != nil {
     fmt.Println(err)
