@@ -105,13 +105,13 @@ func distanceBack (space [][]rune, visited map[Point]Point, end Point, start Poi
   for itr != start {
     if _, expandedCol := expandCols[itr.X]; expandedCol {
       if _, crossed := crossedCols[itr.X]; !crossed {
-        d += 1
+        d += 999999
         crossedCols[itr.X] = struct{}{}
       }
     }
-    if _, expandedRow := expandRows[itr.X]; expandedRow {
-       if _, crossed := crossedRows[itr.X]; !crossed {
-         d += 1
+    if _, expandedRow := expandRows[itr.Y]; expandedRow {
+       if _, crossed := crossedRows[itr.Y]; !crossed {
+         d += 999999
          crossedRows[itr.Y] = struct{}{}
        }
     }
@@ -121,7 +121,6 @@ func distanceBack (space [][]rune, visited map[Point]Point, end Point, start Poi
     itr.X += dir.X
     itr.Y += dir.Y
   }
-  fmt.Printf("Start: %d, %d -- End: %d, %d -- %d\n", start.X, start.Y, end.X, end.Y, d)
   return d
 }
 
@@ -188,7 +187,7 @@ func findGalaxies(space [][]rune) []Point {
 }
 
 func parseSpace() ([][]rune) {
-  var file, _ = os.Open("./inputs/test11.txt")
+  var file, _ = os.Open("./inputs/day11.txt")
   var scanner = bufio.NewScanner(file)
 
   space := [][]rune{}
