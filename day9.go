@@ -45,7 +45,7 @@ func predictNextValue(set []int) int {
  return next
 }
 
-func main() {
+func day9() {
   file, _ := os.Open("./inputs/day9.txt")
 
   content, _ := io.ReadAll(file)
